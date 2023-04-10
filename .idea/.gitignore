@@ -1,0 +1,41 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+.git
+logs
+rebel.xml
+# Package Files #
+*.jar
+*.war
+*.ear
+# Eclipse
+*.pydevproject
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+.idea
+*.iws
+*.iml
+
+
