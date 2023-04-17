@@ -19,6 +19,7 @@ import java.util.List;
 @Api(tags = "角色管理")
 @RestController
 @RequestMapping("/admin/system/sysRole")
+@CrossOrigin
 public class SysRoleController {
 
     // 注入service
@@ -53,7 +54,7 @@ public class SysRoleController {
      * @return
      */
     @ApiOperation("条件分页查询")
-    @GetMapping("{page}_{limit}")
+    @GetMapping("{page}/{limit}")
     public Result pageQueryRole (@PathVariable Long page, @PathVariable Long limit,
                                  SysRoleQueryVo sysRoleQueryVo) {
         // 调用service的方法实现
@@ -124,7 +125,18 @@ public class SysRoleController {
         return Result.ok();
     }
 
+    /**
+     * 批量删除
+     * @param idList
+     * @return
+     */
+    @ApiOperation(value = "批量删除")
+    @DeleteMapping("/batchRemove")
+    public Result batchRemove(@RequestBody List<Long> idList) {
+        sysRoleService.removeByIds(idList);
+        return Result.ok("删除id成功");
 
+    }
 
 
 
