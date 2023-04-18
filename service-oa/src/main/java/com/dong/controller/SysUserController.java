@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+@Api(tags = "用户管理")
 @RestController
 @RequestMapping("/admin/system/sysUser")
+@CrossOrigin
 public class SysUserController {
 
     @Autowired

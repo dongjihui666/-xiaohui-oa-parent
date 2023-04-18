@@ -7,6 +7,7 @@ import com.dong.Result;
 import com.dong.ResultCodeEnum;
 import com.dong.model.system.SysRole;
 import com.dong.service.SysRoleService;
+import com.dong.vo.system.AssginRoleVo;
 import com.dong.vo.system.SysRoleQueryVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,6 +16,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Api(tags = "角色管理")
 @RestController
@@ -136,6 +138,25 @@ public class SysRoleController {
         sysRoleService.removeByIds(idList);
         return Result.ok("删除id成功");
 
+    }
+    /**
+     * 给用户分配角色及更改用户状态
+     *
+     */
+    @ApiOperation(value = "根据用户获取角色数据")
+    @GetMapping("/toAssign/{userId}")
+    public Result toAssign(@PathVariable long userId) {
+        Map<String,Object> roleMap = sysRoleService.findRoleByAdminId(userId);
+        return Result.ok(roleMap);
+    }
+    /**
+     * 根据用户分配角色
+     */
+    @ApiOperation(value = "根据用户分配角色")
+    @PostMapping("/doAssign")
+    public Result doAssign(@RequestBody AssginRoleVo assginRoleVo) {
+        sysRoleService.doAssign(assginRoleVo);
+        return Result.ok();
     }
 
 
